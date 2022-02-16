@@ -3,3 +3,5 @@ public class Egg extends Weapon {
         super(name, damagePoints);
     }
 }
+
+//Hello
