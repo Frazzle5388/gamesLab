@@ -4,10 +4,13 @@ public abstract class Player implements IAttack {
     private String name;
     private int health;
     ArrayList<Weapon> weapons;
+    Weapon currentWeapon;
 
-    public Player(String name, int health) {
+    public Player(String name, int health, Weapon currentWeapon, ArrayList<Weapon> weapons) {
         this.name = name;
         this.health = health;
+        this.weapons = weapons;
+        this.currentWeapon = currentWeapon;
     }
 
     public String getName() {
@@ -18,13 +21,13 @@ public abstract class Player implements IAttack {
         return health;
     }
 
-    public void takeDamage(Weapon weapon){
-        this.health-=weapon.getDamagePoints();
-
-    }
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public void switchCurrentWeapon(int index){
+        this.currentWeapon = this.weapons.get(index);
     }
 
     public void causeDamage(Weapon weapon, Player player){
