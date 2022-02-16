@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
-public abstract class Player implements IAttack {
+public abstract class Player implements IAttack, IDefend{
     private String name;
-    private int health;
+    private double health;
     ArrayList<Weapon> weapons;
     Weapon currentWeapon;
 
-    public Player(String name, int health, Weapon currentWeapon, ArrayList<Weapon> weapons) {
+    public Player(String name, double health, Weapon currentWeapon, ArrayList<Weapon> weapons) {
         this.name = name;
         this.health = health;
         this.weapons = weapons;
@@ -17,12 +17,12 @@ public abstract class Player implements IAttack {
         return name;
     }
 
-    public int getHealth() {
+    public double getHealth() {
         return health;
     }
 
 
-    public void setHealth(int health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 
@@ -31,14 +31,30 @@ public abstract class Player implements IAttack {
     }
 
     public void causeDamage(Weapon weapon, Player player){
-        int healthPoints = player.getHealth();
+        double healthPoints = player.getHealth();
         healthPoints -= weapon.getDamagePoints();
         player.setHealth(healthPoints);
     }
 
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public void setCurrentWeapon(Weapon currentWeapon) {
+        this.currentWeapon = currentWeapon;
+    }
+
     public void heal(Weapon weapon){
-        int health = this.getHealth();
+        double health = this.getHealth();
         health += weapon.getDamagePoints();
         this.setHealth(health);
+    }
+
+    public void reduceAttackdamage(Player player){
+        Weapon getWeapon = player.getCurrentWeapon();
+        double damagePoints = getWeapon.getDamagePoints();
+        damagePoints = damagePoints / 2.00;
+        getWeapon.setDamagePoints(damagePoints);
+        player.setCurrentWeapon(getWeapon);
     }
 }

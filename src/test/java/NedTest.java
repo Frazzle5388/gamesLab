@@ -57,4 +57,11 @@ public class NedTest {
 
     }
 
+    @Test
+    public void canReduceDamage(){
+        pensioner.reduceAttackdamage(ned);
+        ned.causeDamage(buckfast, pensioner);
+        assertEquals(17.5, pensioner.getHealth(),0.00);
+    }
+
 }

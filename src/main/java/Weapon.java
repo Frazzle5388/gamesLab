@@ -1,8 +1,8 @@
 public abstract class Weapon {
     private String name;
-    private int damagePoints;
+    private double damagePoints;
 
-    public Weapon(String name, int damagePoints) {
+    public Weapon(String name, double damagePoints) {
         this.name = name;
         this.damagePoints = damagePoints;
     }
@@ -11,11 +11,11 @@ public abstract class Weapon {
         return name;
     }
 
-    public int getDamagePoints() {
+    public double getDamagePoints() {
         return damagePoints;
     }
 
-
-
-
+    public void setDamagePoints(double damagePoints) {
+        this.damagePoints = damagePoints;
+    }
 }
